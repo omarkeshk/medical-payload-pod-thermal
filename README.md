@@ -17,6 +17,8 @@ enclosures (power, control, and a resistive-heating *plant* module). The goal: k
 | `logging/` | Python serial-logging + analysis toolkit. `live_heat.py` (live 3-sensor plot), `log_heat.py`, `plot_heat.py`, `report_heat.py` (report figures + lumped-capacitance τ fit), `heat_common.py`. |
 | `data/` | Sample experimental runs: `heat_fan_off.csv` (no cooling), `heat_cooling.csv` (cool-down), `heat_fan_at_35.csv` (steady-state control). |
 | `cfd/` | OpenFOAM CFD pipeline (parametric, no CAD import): `case_generator.py`, `runner.py`, `run_report_cases.py`, ParaView/figure scripts, and `RESULTS.md`. |
+| `space/` | Space-environment (vacuum) bonus variant: `space_analysis.md` (radiation balance + radiator sizing) and `calculix/` — a CalculiX conduction+radiation FEA of the radiator panel. |
+| `report/` | The final technical report (PDF) — full analysis, figures, BOM, and results. |
 
 ## Hardware
 
@@ -43,8 +45,9 @@ cd cfd && python run_report_cases.py   # fan-on and fan-off cases
 
 - **Analytical:** thermal-resistance network + energy balance; lumped-capacitance time constant
   (cooling τ ≈ 29 s, R² = 0.995).
-- **CFD:** `buoyantSimpleFoam`, k-ω SST, 528 k cells — fan ON 32 °C (PASS), fan OFF 65 °C (FAIL).
+- **CFD (bonus):** `buoyantSimpleFoam`, k-ω SST, 528 k cells — fan ON 32 °C (PASS), fan OFF 65 °C (FAIL).
+- **Space variant (bonus):** vacuum radiation balance + CalculiX conduction-radiation FEA — a ~0.035 m² high-emissivity radiator holds the module at 40 °C (FEA mean ≈ 37 °C).
 - **Experiment:** steady-state ~35 °C under closed-loop control; full-heat draw 17.1 W.
 
 ## Team 14
-Salma Saeed · Jana Mohamed · Omar Ahmed · Omar Khaled
+Salma Saeed · Jana Mohamed · Omar Ahmad Keshk · Omar Khaled
